@@ -1,0 +1,58 @@
+import FormContainer from "./FormContainer";
+import AuthForm from "./AuthForm";
+import { Link } from "react-router-dom";
+import * as UserService from "services/user";
+import { useState } from "react";
+const SignUpPage = () => {
+  const [error, setError] = useState(null);
+  return (
+    <FormContainer>
+      {error && <div className="text-sm text-red-600">{error}</div>}
+
+      <AuthForm
+        fields={[
+          {
+            label: "username",
+            type: "text",
+          },
+          {
+            label: "password",
+            type: "password",
+          },
+          {
+            label: "confirm password",
+            type: "password",
+          },
+        ]}
+        submitButtonText="create an account"
+        onSubmit={async (values) => {
+          const { username, password } = values;
+          if (username.length <= 3) {
+            setError("Username must be longer than 3 characters");
+            return;
+          } else if (password !== values["confirm password"]) {
+            setError("Passwords don't match, please confirm");
+            return;
+          } else if (password.length < 4) {
+            setError("Password must be at least 4 characters");
+            return;
+          }
+          const response = await UserService.createUser({ username, password });
+          if (response.status === 201) {
+            console.log("user created!");
+            setError(null);
+          } else {
+            const data = await response.json();
+            setError(data.error);
+          }
+          console.log(response.status);
+        }}
+      />
+      <Link className="text-emerald-700 text-sm underline" to="/">
+        sign in
+      </Link>
+    </FormContainer>
+  );
+};
+
+export default SignUpPage;
