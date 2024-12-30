@@ -1,10 +1,11 @@
 import FormContainer from "./FormContainer";
 import AuthForm from "./AuthForm";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as UserService from "services/user";
 import { useState } from "react";
 const SignUpPage = () => {
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
   return (
     <FormContainer>
       {error && <div className="text-sm text-red-600">{error}</div>}
@@ -41,6 +42,11 @@ const SignUpPage = () => {
           if (response.status === 201) {
             console.log("user created!");
             setError(null);
+            navigate("/", {
+              state: {
+                newAccount: true
+              }
+            })
           } else {
             const data = await response.json();
             setError(data.error);
