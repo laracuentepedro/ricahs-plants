@@ -1,5 +1,6 @@
+import NavBar from "shared-components/NavBar";
 const PlantListPage = () => {
-    return <div>plants will go here!</div>
+    return <div><NavBar/></div>
 }
 
 export default PlantListPage;
