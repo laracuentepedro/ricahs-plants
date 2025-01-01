@@ -106,21 +106,21 @@ To run the app locally, follow these steps:
 
 
 
-Install dependencies:
-npm install
+2. Install dependencies:
+    ```npm install
 
 
 
-Start the development server:
-npm run dev
+3. Start the development server:
+    ```npm run dev
 
 
 
-Open the app in your browser at http://localhost:5173.
+4. Open the app in your browser at http://localhost:5173.
 
 
 
-Scripts
+## Scripts
 The following scripts are available in the package.json file:
 
 npm run dev: Starts the development server.
@@ -129,7 +129,7 @@ npm run preview: Previews the production build.
 npm run lint: Runs ESLint to check for code quality issues.
 
 
-Technologies Used
+## Technologies Used
 
 Frontend: React, React Router, Tailwind CSS
 Build Tool: Vite
@@ -138,7 +138,7 @@ API Integration: Fetch API
 State Management: React Context API
 
 
-Future Features
+## Future Features
 The app is a work in progress, and the following features are planned for future development:
 
 Displaying a detailed list of plants on the Plant List Page.
@@ -147,5 +147,5 @@ Implementing user roles and permissions.
 Enhancing the UI/UX with additional animations and interactivity.
 
 
-Updates
+## Updates
 This README will be updated as new features are added to the app.
