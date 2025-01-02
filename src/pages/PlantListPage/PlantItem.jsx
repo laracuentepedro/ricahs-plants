@@ -1,4 +1,14 @@
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
+
+const POT_COLORS = {
+    stone: "bg-stone-200",
+    slate: "bg-slate-300",
+    sky: "bg-sky-700",
+    black: "bg-gray-600",
+    white: "bg-gray-50",
+    amber: "bg-amber-600",
+  };
 
 const PlantItem = (props) => {
   const { name, price, images } = props.plant;
@@ -9,7 +19,20 @@ const PlantItem = (props) => {
         <div className="font-playfair text-xl">{name}</div>
         <div>${price}</div>
       </div>
-      <div className="text-slate-500 text-sm">{images[0]['pot_color']}</div>
+      <div className='flex justify-between items-center'>
+        <div className="text-slate-500 text-sm">{images[0]['pot_color']}</div>
+        <div className='flex mt-4'>
+            {
+                images.map((image, idx) =>(
+                    <div 
+                    key={idx}
+                    className={clsx(
+                        'h-4 w-4 rounded-full border ml-1', POT_COLORS[image.pot_color]
+                    )}></div>
+                ) )
+            }
+            </div>
+      </div>
     </div>
   );
 }

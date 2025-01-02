@@ -21,11 +21,11 @@ const PlantListPage = () => {
     <RedirectToSignInIfSignedOut>
       <NavBar />
       {isLoading ? (
-        <div className="pt-40 flex justify-center">
+        <div className="pt-40 flex justify-center bg-emerald-50">
           <i className="fa-solid fa-circle-notch animate-spin text-3xl text-emerald-700"></i>
         </div>
       ) : (
-        <div className="flex justify-center py-24">
+        <div className="flex justify-center py-24 bg-emerald-50">
           <div className="flex flex-col w-full max-w-4xl">
             <div className="font-playfair text-4xl ml-4 text-emerald-800">
               Plants in Stock
