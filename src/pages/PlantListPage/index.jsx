@@ -26,7 +26,7 @@ const PlantListPage = () => {
         </div>
       ) : (
         <div className="flex justify-center py-24">
-          <div className="flex flex-col w-full max-w-5xl">
+          <div className="flex flex-col w-full max-w-4xl">
             <div className="font-playfair text-4xl ml-4 text-emerald-800">
               Plants in Stock
             </div>

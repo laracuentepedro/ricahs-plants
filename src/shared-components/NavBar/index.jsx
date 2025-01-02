@@ -5,7 +5,7 @@ const NavBar = () => {
   const { username, signOut } = useContext(SessionContext);
   return (
     <nav className="bg-emerald-700  flex justify-center">
-      <div className="w-full max-w-5xl px-4 py-4 text-white flex items-center justify-between">
+      <div className="w-full max-w-4xl px-4 py-4 text-white flex items-center justify-between">
         <div className="flex items-center">
           <img
             className="w-12 mr-2"
