@@ -1,6 +1,6 @@
 # Rica's Plants
 
-Rica's Plants is a React-based web application built with Vite. The app is designed to provide a seamless user experience for managing plants, with features such as user authentication, session management, and a plant list page. The project is a work in progress, and this document outlines the features implemented so far.
+Rica's Plants is a React-based web application built with Vite. The app serves as the frontend for an e-commerce store specializing in plants. It provides a seamless user experience for browsing and purchasing plants, with features such as user authentication, session management, and a dynamic plant list page.
 
 ---
 
@@ -10,6 +10,7 @@ Rica's Plants is a React-based web application built with Vite. The app is desig
 The app includes a robust user authentication system with the following features:
 - **Sign In Page**: Users can log in with their username and password.
   - Displays error messages for invalid credentials.
+  - Shows success message when signing in after creating a new account.
   - Redirects users to the plant list page upon successful login.
 - **Sign Up Page**: New users can create an account by providing a username and password.
   - Validates input fields:
@@ -27,125 +28,113 @@ The app uses a session-based authentication system:
 - **Session Context**: A global context (`SessionContext`) is used to manage the user's session state across the app.
   - Provides the username of the logged-in user.
   - Includes methods for signing in, signing out, and managing session tokens.
+- **Protected Routes**: Implements route protection with automatic redirects:
+  - Signed-in users are redirected from auth pages to the plant list.
+  - Signed-out users are redirected to the sign-in page.
 
 ---
 
 ### 3. **Plant List Page**
-- A placeholder page (`PlantListPage`) is implemented to display a list of plants.
-- Includes a navigation bar (`NavBar`) that displays the app's logo and the logged-in user's username.
+- Displays a grid of available plants with the following features:
+  - Plant images with dynamic pot color selection
+  - Plant name and price information
+  - Interactive pot color swatches for each plant
+  - Loading state with animated spinner while fetching data
+- Implements a clean, responsive layout with maximum width constraints
+- Integrates with backend API to fetch plant data
 
 ---
 
-### 4. **Navigation**
-The app uses `react-router-dom` for client-side routing:
-- **Routes**:
-  - `/`: Sign In Page
-  - `/sign-up`: Sign Up Page
-  - `/plants`: Plant List Page
-- **Redirects**:
-  - If a user is already signed in, they are redirected to the plant list page when accessing the sign-in or sign-up pages.
+### 4. **Navigation & UI**
+- **NavBar Component**: 
+  - Displays the app's logo and branding
+  - Shows the logged-in user's username
+  - Features a user menu dropdown with sign-out functionality
+- **Responsive Design**:
+  - Adapts to different screen sizes
+  - Shows/hides decorative elements based on viewport
+  - Maintains consistent spacing and layout across devices
 
 ---
 
-### 5. **Shared Components**
-The app includes reusable components to ensure consistency and modularity:
-- **NavBar**: Displays the app's logo and the logged-in user's username.
-- **RedirectToPlantsIfSignedIn**: A higher-order component that redirects signed-in users to the plant list page.
-- **FormContainer**: A layout component for authentication forms, with a responsive design and a background image.
-- **AuthForm**: A dynamic form component for handling user input in the sign-in and sign-up pages.
-  - Includes input validation and a loading spinner for the submit button.
+### 5. **Styling & Design System**
+- **Custom Fonts**: 
+  - `Lato` for general text and UI elements
+  - `Playfair Display` for headings and brand elements
+- **Color Scheme**:
+  - Primary: Emerald theme for brand identity
+  - Supporting colors for UI elements and states
+- **UI Components**:
+  - Custom form containers with responsive design
+  - Loading spinners for async operations
+  - Interactive buttons and dropdowns
+  - Error and success message displays
 
 ---
 
 ### 6. **API Integration**
-The app integrates with a backend API for user authentication:
-- **API Fetch Utility**: A utility function (`apiFetch`) is used to make API requests.
-  - Automatically includes the API key and session token in the request headers.
-- **User Service**: A service module (`user.js`) provides methods for:
-  - Creating a new user (`createUser`).
-  - Creating a new session (`createSession`).
+- **API Fetch Utility**: A centralized utility for API requests that:
+  - Automatically handles authentication headers
+  - Manages session tokens
+  - Provides consistent error handling
+- **Service Modules**:
+  - User service for authentication operations
+  - Plant service for fetching plant data
+  - Structured API endpoints for different operations
 
 ---
 
-### 7. **Styling**
-The app uses Tailwind CSS for styling:
-- **Custom Fonts**: The app includes two custom fonts:
-  - `Lato` for general text.
-  - `Playfair Display` for headings.
-- **Responsive Design**: The app is designed to be responsive and works well on different screen sizes.
-- **Custom Components**: Tailwind classes are used to style components like buttons, forms, and navigation bars.
+## Development Setup
+The app is built with modern tooling:
+- **Vite**: For fast development and optimized builds
+- **ESLint**: Configured for React with additional plugins
+- **Tailwind CSS**: For utility-first styling
+- **Path Aliases**: For clean import statements
 
----
-
-### 8. **Development Setup**
-The app is built with Vite, providing a fast development environment with hot module replacement (HMR). Key development features include:
-- **ESLint Configuration**: The app uses ESLint with plugins for React and React Hooks to enforce coding standards.
-- **Path Aliases**: The app uses `vite-jsconfig-paths` to enable path aliases for cleaner imports.
-
----
-
-## Project Structure
-The project is organized into the following directories:
-- `src/`: Contains the source code for the app.
-  - `pages/`: Includes the main pages of the app (e.g., SignInPage, SignUpPage, PlantListPage).
-  - `shared-components/`: Contains reusable components like `NavBar` and `RedirectToPlantsIfSignedIn`.
-  - `services/`: Includes service modules for API integration and session management.
-  - `contexts/`: Contains the `SessionContext` for global state management.
-- `public/`: Contains static assets like the app's favicon.
-- `index.html`: The main HTML file for the app.
-
----
-
-## Installation and Setup
-To run the app locally, follow these steps:
+### Installation
 
 1. Clone the repository:
    ```bash
    git clone https://github.com/laracuentepedro/ricahs-plants.git
    cd ricahs-plants
-
-
+   ```
 
 2. Install dependencies:
-    ```npm install
-
-
+   ```bash
+   npm install
+   ```
 
 3. Start the development server:
-    ```npm run dev
+   ```bash
+   npm run dev
+   ```
 
+4. Open the app in your browser at [http://localhost:5173](http://localhost:5173)
 
+### Scripts
 
-4. Open the app in your browser at http://localhost:5173.
-
-
-
-## Scripts
-The following scripts are available in the package.json file:
-
-npm run dev: Starts the development server.
-npm run build: Builds the app for production.
-npm run preview: Previews the production build.
-npm run lint: Runs ESLint to check for code quality issues.
-
+- `npm run dev`: Starts the development server
+- `npm run build`: Builds the app for production
+- `npm run preview`: Previews the production build
+- `npm run lint`: Runs ESLint to check code quality
 
 ## Technologies Used
 
-Frontend: React, React Router, Tailwind CSS
-Build Tool: Vite
-Linting: ESLint
-API Integration: Fetch API
-State Management: React Context API
-
+- **Frontend**: React 18, React Router v7
+- **Build Tool**: Vite 6
+- **Styling**: Tailwind CSS
+- **State Management**: React Context API
+- **Icons**: Font Awesome
+- **HTTP Client**: Fetch API
+- **Authentication**: JWT-based sessions
 
 ## Future Features
-The app is a work in progress, and the following features are planned for future development:
-
-Displaying a detailed list of plants on the Plant List Page.
-Adding CRUD functionality for managing plants.
-Implementing user roles and permissions.
-Enhancing the UI/UX with additional animations and interactivity.
-
+Planned enhancements include:
+- Plant search and filtering capabilities
+- Shopping cart functionality
+- User profile management
+- Plant care instructions and tips
+- Order processing system
 
 ## Updates
 This README will be updated as new features are added to the app.
