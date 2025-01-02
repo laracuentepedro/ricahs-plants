@@ -21,7 +21,7 @@ const PlantListPage = () => {
     <RedirectToSignInIfSignedOut>
       <NavBar />
       {isLoading ? (
-        <div className="pt-40 flex justify-center bg-emerald-50">
+        <div className=" flex justify-center items-center bg-emerald-50 h-screen">
           <i className="fa-solid fa-circle-notch animate-spin text-3xl text-emerald-700"></i>
         </div>
       ) : (
