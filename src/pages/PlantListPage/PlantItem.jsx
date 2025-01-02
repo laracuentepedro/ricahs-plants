@@ -30,8 +30,10 @@ const PlantItem = (props) => {
                 images.map((image, idx) =>(
                     <div 
                     key={idx}
+                    onMouseEnter={()=>setSelectedPlant(idx)}
                     className={clsx(
-                        'h-4 w-4 rounded-full border border-slate-300 ml-1', POT_COLORS[image.pot_color]
+                        'h-4 w-4 rounded-full border border-slate-300 ml-1', POT_COLORS[image.pot_color],
+                        (selectedPlant === idx) && 'outline outline-2 outline-slate-400 outline-offset-1'
                     )}></div>
                 ) )
             }
