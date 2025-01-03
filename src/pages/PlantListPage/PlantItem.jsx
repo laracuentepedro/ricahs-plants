@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 const POT_COLORS = {
     stone: "bg-stone-200",
     slate: "bg-slate-300",
@@ -13,12 +14,14 @@ const POT_COLORS = {
   const getRandomIndex = (array) => Math.floor(Math.random()*array.length);
 
 const PlantItem = (props) => {
-  const { name, price, images } = props.plant;
+  const { name, price, images,id } = props.plant;
     const [selectedPlant, setSelectedPlant] = useState(getRandomIndex(images));
   
   return (
     <div className="p-4">
+      <Link to={`/plants/${id}`}>
       <img className="w-60 h-90 object-cover rounded-lg" src={images[selectedPlant]["src"]} />
+      </Link>
       <div className="flex items-center justify-between font-lato text-emerald-700 mt-2">
         <div className="font-playfair text-xl">{name}</div>
         <div>${price}</div>

@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import SessionContext from "contexts/SessionContext";
+import { Link } from "react-router-dom";
 const NavBar = () => {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const { username, signOut } = useContext(SessionContext);
@@ -7,10 +8,12 @@ const NavBar = () => {
     <nav className="bg-emerald-700  flex justify-center">
       <div className="w-full max-w-4xl px-4 py-4 text-white flex items-center justify-between">
         <div className="flex items-center">
+          <Link to="/plants">
           <img
             className="w-12 mr-2"
             src="https://static-task-assets.react-formula.com/capstone_logo_light.png"
-          />
+            />
+            </Link>
           <div className="text-2xl font-playfair">Rica&apos;s Plants</div>
         </div>
         <div className="relative">
