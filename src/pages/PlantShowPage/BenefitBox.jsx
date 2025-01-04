@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import clsx from "clsx";
 
 const BenefitBox = (props) => {

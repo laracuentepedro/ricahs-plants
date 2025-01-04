@@ -1,15 +1,21 @@
+/* eslint-disable react/prop-types */
 import PlantHeading from "./PlantHeading";
 import BenefitBox from "./BenefitBox";
+import PlantPurchaseOptions from "./PlantPurchaseOptions";
+import { useState } from "react";
+import { getRandomIndex } from "utils";
 
 const PlantInfoSection = (props) => {
   const { plant } = props;
+  const [selectedPlant, setSelectedPlant] = useState(getRandomIndex(plant.images))
+
   return (
     <div className="flex flex-col md:flex-row pt-24 px-4">
       <div className="md:hidden">
         <PlantHeading plant={plant} />
       </div>
       <div className="flex-1">
-        <img className="rounded-lg" src={plant.images[0].src} />
+        <img className="rounded-lg" src={plant.images[selectedPlant].src} />
         <div className="flex mt-4 mb-8">
             <BenefitBox
                 icon="fa-regular fa-circle-check"
@@ -31,6 +37,10 @@ const PlantInfoSection = (props) => {
         <p className="font-lato leading-relaxed text-slate-600">
           {plant.description}
         </p>
+        <PlantPurchaseOptions
+        selectedPlant={selectedPlant} 
+        setSelectedPlant={setSelectedPlant}
+        images={plant.images}/>
       </div>
     </div>
   );

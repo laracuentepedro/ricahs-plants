@@ -2,16 +2,9 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-const POT_COLORS = {
-    stone: "bg-stone-200",
-    slate: "bg-slate-300",
-    sky: "bg-sky-700",
-    black: "bg-gray-600",
-    white: "bg-gray-50",
-    amber: "bg-amber-600",
-  };
+import { getRandomIndex } from 'utils';
+import { POT_COLORS } from 'utils';
 
-  const getRandomIndex = (array) => Math.floor(Math.random()*array.length);
 
 const PlantItem = (props) => {
   const { name, price, images,id } = props.plant;
@@ -51,6 +44,7 @@ PlantItem.propTypes = {
   plant: PropTypes.shape({
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
     images: PropTypes.arrayOf(
       PropTypes.shape({
         src: PropTypes.string.isRequired,
