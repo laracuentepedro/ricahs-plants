@@ -2,10 +2,12 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { POT_COLORS } from "utils";
+import * as cartService from 'services/cart';
 
 const PlantPurchaseOptions = (props) => {
   const { images, selectedPlant, setSelectedPlant } = props;
   const [quantity, setQuantity] = useState(1);
+  const [addingToCart, setAddingToCart] = useState(false);
   console.log(images);
   return (
     <>
@@ -55,6 +57,7 @@ const PlantPurchaseOptions = (props) => {
           className="text-slate-600 text-lg"
           onClick={() => setQuantity(quantity + 1)}><i className="fa-solid fa-plus"></i></button>
         </div>
+        <button className="bg-emerald-700 text-white flex-1 rounded-full ml-4">Add to Cart</button>
       </div>
     </>
   );
