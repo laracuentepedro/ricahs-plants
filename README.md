@@ -7,7 +7,7 @@ Rica's Plants is a React-based web application built with Vite. The app serves a
 ## Features
 
 ### 1. **User Authentication**
-The app includes a robust user authentication system with the following features:
+The app includes a user authentication system with the following features:
 - **Sign In Page**: Users can log in with their username and password.
   - Displays error messages for invalid credentials.
   - Shows success message when signing in after creating a new account.
