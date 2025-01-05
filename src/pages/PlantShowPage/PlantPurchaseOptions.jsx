@@ -3,12 +3,13 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { POT_COLORS } from "utils";
 import * as cartService from 'services/cart';
+import { useParams } from "react-router-dom";
 
 const PlantPurchaseOptions = (props) => {
   const { images, selectedPlant, setSelectedPlant } = props;
   const [quantity, setQuantity] = useState(1);
   const [addingToCart, setAddingToCart] = useState(false);
-  console.log(images);
+  const {plantId} = useParams();
   return (
     <>
       <div className="font-lato mt-8 mb-4 text-emerald-700 text-xl">
@@ -57,18 +58,30 @@ const PlantPurchaseOptions = (props) => {
           className="text-slate-600 text-lg"
           onClick={() => setQuantity(quantity + 1)}><i className="fa-solid fa-plus"></i></button>
         </div>
-        <button className="bg-emerald-700 text-white flex-1 rounded-full ml-4">Add to Cart</button>
+        <button 
+        onClick={async()=>{
+          setAddingToCart(true);
+          const potColor = images[selectedPlant].pot_color;
+          const response = await cartService.addToCart({plantId, quantity, potColor})
+          console.log(response.status);
+          setAddingToCart(false);
+        }}
+        className="bg-emerald-700 text-white flex-1 rounded-full ml-4 hover:bg-emerald-800">
+        <i className={clsx(addingToCart ? "animate-spin fa-solid fa-circle-notch" : "fa-solid fa-cart-plus", "mr-2")}></i>
+          Add to Cart
+          </button>
       </div>
     </>
   );
 };
+
 PlantPurchaseOptions.propTypes = {
   images: PropTypes.arrayOf(
     PropTypes.shape({
       pot_color: PropTypes.string.isRequired,
     })
   ).isRequired,
-  selectedPlant: PropTypes.object,
+  selectedPlant: PropTypes.number,
   setSelectedPlant: PropTypes.func,
 };
 
