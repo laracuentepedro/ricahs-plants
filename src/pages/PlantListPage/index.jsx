@@ -12,7 +12,6 @@ const PlantListPage = () => {
       const response = await plantService.getPlants();
       const data = await response.json();
       setPlants(data);
-      console.log(data);
       setIsLoading(false);
     };
     fetchPlants();

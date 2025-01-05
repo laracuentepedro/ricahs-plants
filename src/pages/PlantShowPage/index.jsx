@@ -16,7 +16,6 @@ const PlantShowPage = () => {
       const data = await response.json();
       setPlant(data);
       setIsLoading(false);
-      console.log(data);
     };
     fetchPlant();
   }, [plantId]);

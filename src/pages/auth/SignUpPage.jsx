@@ -46,7 +46,6 @@ const SignUpPage = () => {
               password,
             });
             if (response.status === 201) {
-              console.log("user created!");
               setError(null);
               navigate("/", {
                 state: {
@@ -57,7 +56,6 @@ const SignUpPage = () => {
               const data = await response.json();
               setError(data.error);
             }
-            console.log(response.status);
           }}
         />
         <Link className="text-emerald-700 text-sm underline" to="/">
