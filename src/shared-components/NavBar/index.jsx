@@ -51,7 +51,7 @@ const NavBar = () => {
               cart
             </button>
           </div>
-          {cartModalOpen && <CartModal/>}
+          {cartModalOpen && <CartModal onClickClose={()=>setCartModalOpen(false)}/>}
         </div>
       </div>
     </nav>
