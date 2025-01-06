@@ -1,8 +1,10 @@
 import { useContext, useState } from "react";
 import SessionContext from "contexts/SessionContext";
 import { Link } from "react-router-dom";
+import CartModal from "./modals/CartModal";
 const NavBar = () => {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [cartModalOpen, setCartModalOpen] = useState(false);
   const { username, signOut } = useContext(SessionContext);
   return (
     <nav className="bg-emerald-700  flex justify-center">
@@ -40,14 +42,16 @@ const NavBar = () => {
             )}
           </div>
           <div
-            onClick={() => null}
             className="font-lato flex items-center text-emerald-100"
-          >
-            <button>
+           >
+            <button
+              onClick={()=>setCartModalOpen(true)}
+            >
               <i className="fa-solid fa-cart-shopping mr-2"></i>
               cart
             </button>
           </div>
+          {cartModalOpen && <CartModal/>}
         </div>
       </div>
     </nav>
