@@ -1,7 +1,8 @@
 import { removeItemFromCart } from "services/cart";
+import PropTypes from 'prop-types';
 
 const CartItem = (props) => {
-    const {fetchCart, item} = props;
+  const { fetchCart, item } = props;
   const { id, image_src, plant_name, pot_color, price_per_unit, quantity } =
     item;
 
@@ -30,17 +31,30 @@ const CartItem = (props) => {
         <div className="font-lato text-lg text-slate-500">
           ${price_per_unit * quantity}
         </div>
-        <button 
-        onClick={async()=>{
+        <button
+          onClick={async () => {
             const response = await removeItemFromCart(id);
             console.log(response.status);
             await fetchCart();
-            
-        }}
-        className="text-slate-400 hover:text-red-600 text-sm">remove <i className="fa-solid fa-trash"></i></button>
+          }}
+          className="text-slate-400 hover:text-red-600 text-sm"
+        >
+          remove <i className="fa-solid fa-trash"></i>
+        </button>
       </div>
     </div>
   );
+};
+CartItem.propTypes = {
+  fetchCart: PropTypes.func.isRequired,
+  item: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    image_src: PropTypes.string.isRequired,
+    plant_name: PropTypes.string.isRequired,
+    pot_color: PropTypes.string.isRequired,
+    price_per_unit: PropTypes.number.isRequired,
+    quantity: PropTypes.number.isRequired
+  }).isRequired
 };
 
 export default CartItem;
