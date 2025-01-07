@@ -5,6 +5,7 @@ import CartModal from "./modals/CartModal";
 const NavBar = () => {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [cartModalOpen, setCartModalOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { username, signOut } = useContext(SessionContext);
   return (
     <nav className="bg-emerald-700  flex justify-center">
@@ -18,7 +19,7 @@ const NavBar = () => {
           </Link>
           <div className="text-2xl font-playfair">Rica&apos;s Plants</div>
         </div>
-        <div className="flex gap-8">
+        <div className="gap-8 hidden sm:flex">
           <div className="relative">
             <button
               onClick={() => setUserMenuOpen(!userMenuOpen)}
@@ -41,18 +42,17 @@ const NavBar = () => {
               </div>
             )}
           </div>
-          <div
-            className="font-lato flex items-center text-emerald-100"
-           >
-            <button
-              onClick={()=>setCartModalOpen(true)}
-            >
+          <div className="font-lato flex items-center text-emerald-100">
+            <button onClick={() => setCartModalOpen(true)}>
               <i className="fa-solid fa-cart-shopping mr-2"></i>
               cart
             </button>
           </div>
-          {cartModalOpen && <CartModal onClickClose={()=>setCartModalOpen(false)}/>}
+          {cartModalOpen && (
+            <CartModal onClickClose={() => setCartModalOpen(false)} />
+          )}
         </div>
+        <button><i className="fa-solid fa-bars text-3xl"></i></button>
       </div>
     </nav>
   );
