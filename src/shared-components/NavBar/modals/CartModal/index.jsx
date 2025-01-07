@@ -1,5 +1,5 @@
 import SessionContext from "contexts/SessionContext";
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import { RemoveScroll } from "react-remove-scroll";
 import { useState, useEffect } from "react";
 import { getCart } from "services/cart";
@@ -10,14 +10,15 @@ const CartModal = ({ onClickClose }) => {
   const { username } = useContext(SessionContext);
   const [cart, setCart] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const fetchCart = async () => {
+  
+  const fetchCart = useCallback (async () => {
     setIsLoading(true);
     const response = await getCart();
     const data = await response.json();
     console.log(data);
     setCart(data);
     setIsLoading(false);
-  };
+  }, []);
   useEffect(() => {
     fetchCart();
   }, []);
