@@ -4,6 +4,7 @@ import { RemoveScroll } from "react-remove-scroll";
 import { useState, useEffect } from "react";
 import { getCart } from "services/cart";
 import Spinner from "shared-components/Spinner";
+import CartItem from "./CartItem";
 
 const CartModal = ({ onClickClose }) => {
   const { username } = useContext(SessionContext);
@@ -14,6 +15,7 @@ const CartModal = ({ onClickClose }) => {
       setIsLoading(true);
       const response = await getCart();
       const data = await response.json();
+      console.log(data);
       setCart(data);
       setIsLoading(false);
     };
@@ -35,8 +37,13 @@ const CartModal = ({ onClickClose }) => {
           >
             <i className="fa-solid fa-xmark"></i>
           </button>
-          {isLoading ? <Spinner/> : 'cart items here'}
-          
+          {isLoading ? <Spinner /> 
+          : 
+          <div>
+            {cart.map((item)=>(
+                <CartItem key={item.id} item={item}/>
+            ))}
+            </div>}
         </div>
       </div>
     </RemoveScroll>
