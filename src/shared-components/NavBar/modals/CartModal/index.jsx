@@ -24,7 +24,7 @@ const CartModal = ({ onClickClose }) => {
   return (
     <RemoveScroll>
       <div className="z-50 fixed inset-0 bg-black/30 backdrop-blur-sm flex justify-end">
-        <div className="bg-white w-full max-w-lg text-black">
+        <div className="bg-emerald-50 w-full max-w-lg">
           <div
             className="
             flex justify-center py-8 bg-emerald-800 text-emerald-50 font-playfair text-2xl"
@@ -39,10 +39,10 @@ const CartModal = ({ onClickClose }) => {
           </button>
           {isLoading ? <Spinner /> 
           : 
-          <div className="bg-emerald-50 min-h-screen">
+          <div className="min-h-screen mt-4">
             {cart.map((item,idx)=>(
                 <>
-                <div className="h-px bg-slate-200 mx-4"></div>
+                {idx > 0 && <div className="h-px bg-slate-200 mx-4"></div>}
                 <CartItem key={item.id} item={item}/>
                 </>
             ))}
