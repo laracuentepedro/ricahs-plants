@@ -2,6 +2,7 @@ import SessionContext from "contexts/SessionContext";
 import { useCallback, useContext } from "react";
 import { RemoveScroll } from "react-remove-scroll";
 import { useState, useEffect } from "react";
+import PropTypes from 'prop-types';
 import { getCart } from "services/cart";
 import Spinner from "shared-components/Spinner";
 import CartItem from "./CartItem";
@@ -56,6 +57,9 @@ const CartModal = ({ onClickClose }) => {
       </div>
     </RemoveScroll>
   );
+};
+CartModal.propTypes = {
+  onClickClose: PropTypes.func.isRequired
 };
 
 export default CartModal;
