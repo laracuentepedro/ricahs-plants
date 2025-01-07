@@ -8,3 +8,6 @@ export const addToCart = ({plantId, quantity, potColor}) =>
 
 export const getCart = () =>
     apiFetch("GET", "/cart")
+
+export const removeItemFromCart = (id) =>
+    apiFetch("DELETE", `/cart/${id}`)

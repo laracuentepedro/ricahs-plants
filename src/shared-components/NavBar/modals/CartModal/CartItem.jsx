@@ -1,9 +1,12 @@
+import { removeItemFromCart } from "services/cart";
+
 const CartItem = (props) => {
-  const {image_src, plant_name, pot_color, price_per_unit, quantity } =
-    props.item;
+    const {fetchCart, item} = props;
+  const { id, image_src, plant_name, pot_color, price_per_unit, quantity } =
+    item;
 
   return (
-    <div className="flex justify-between w-full py-4 pl-4 pr-8">
+    <div className="flex justify-between w-full py-8 pl-4 pr-8">
       <div className="flex">
         <img
           className="h-32 w-28 rounded-lg mr-4 object-cover"
@@ -23,7 +26,19 @@ const CartItem = (props) => {
           </div>
         </div>
       </div>
-      <div className="font-lato text-lg text-slate-500">${price_per_unit*quantity}</div>
+      <div className="flex flex-col justify-between items-end">
+        <div className="font-lato text-lg text-slate-500">
+          ${price_per_unit * quantity}
+        </div>
+        <button 
+        onClick={async()=>{
+            const response = await removeItemFromCart(id);
+            console.log(response.status);
+            await fetchCart();
+            
+        }}
+        className="text-slate-400 hover:text-red-600 text-sm">remove <i className="fa-solid fa-trash"></i></button>
+      </div>
     </div>
   );
 };

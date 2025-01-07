@@ -10,15 +10,15 @@ const CartModal = ({ onClickClose }) => {
   const { username } = useContext(SessionContext);
   const [cart, setCart] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const fetchCart = async () => {
+    setIsLoading(true);
+    const response = await getCart();
+    const data = await response.json();
+    console.log(data);
+    setCart(data);
+    setIsLoading(false);
+  };
   useEffect(() => {
-    const fetchCart = async () => {
-      setIsLoading(true);
-      const response = await getCart();
-      const data = await response.json();
-      console.log(data);
-      setCart(data);
-      setIsLoading(false);
-    };
     fetchCart();
   }, []);
   return (
@@ -43,7 +43,11 @@ const CartModal = ({ onClickClose }) => {
             {cart.map((item,idx)=>(
                 <>
                 {idx > 0 && <div className="h-px bg-slate-200 mx-4"></div>}
-                <CartItem key={item.id} item={item}/>
+                <CartItem 
+                key={item.id} 
+                item={item}
+                fetchCart={fetchCart}
+                />
                 </>
             ))}
             </div>}
