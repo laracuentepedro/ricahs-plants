@@ -3,11 +3,12 @@ import { useContext } from "react";
 import { RemoveScroll } from "react-remove-scroll";
 import { useState, useEffect } from "react";
 import { getCart } from "services/cart";
+import Spinner from "shared-components/Spinner";
 
 const CartModal = ({ onClickClose }) => {
   const { username } = useContext(SessionContext);
   const [cart, setCart] = useState([]);
-  const [loading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchCart = async () => {
       setIsLoading(true);
@@ -34,6 +35,7 @@ const CartModal = ({ onClickClose }) => {
           >
             <i className="fa-solid fa-xmark"></i>
           </button>
+          {isLoading ? <Spinner/> : 'cart items here'}
           
         </div>
       </div>
