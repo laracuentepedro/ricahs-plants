@@ -61,7 +61,12 @@ const NavBar = () => {
           isOpen={mobileMenuOpen}
           onClickClose={() => setMobileMenuOpen(false)}
         >
-          <MobileModalMenu/>
+          <MobileModalMenu
+          onCartOpenClick={()=>{
+            setCartModalOpen(true);
+            setMobileMenuOpen(false);
+          }}
+          />
         </ModalWrapper>
         <button
           onClick={() => setMobileMenuOpen(true)}

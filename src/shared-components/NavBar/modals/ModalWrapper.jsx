@@ -10,7 +10,7 @@ const ModalWrapper = (props) => {
 
   return (
     <RemoveScroll>
-      <div className="z-50 fixed inset-0 bg-black/30 backdrop-blur-sm flex justify-end">
+      <div className="z-50 fixed inset-0 bg-black/30 backdrop-blur-sm flex justify-end items-start">
       <button
           onClick={onClickClose}
           className="absolute top-2 right-2 p-2 h-12 w-12 bg-emerald-600 rounded-full"

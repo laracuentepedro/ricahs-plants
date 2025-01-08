@@ -4,6 +4,7 @@ import * as plantService from "services/plant";
 import Spinner from "shared-components/Spinner";
 import NavBar from "shared-components/NavBar";
 import PlantInfoSection from "./PlantInfoSection";
+import RedirectToSignInIfSignedOut from "shared-components/RedirectToSignInIfSignedOut";
 const PlantShowPage = () => {
   const { plantId } = useParams();
   const [plant, setPlant] = useState(null);
@@ -21,14 +22,14 @@ const PlantShowPage = () => {
   }, [plantId]);
 
   return (
-    <>
+    <RedirectToSignInIfSignedOut>
       <NavBar />
       <div className="flex justify-center bg-emerald-50 min-h-screen">
         <div className="w-full max-w-5xl">
           {isLoading ? <Spinner /> : <PlantInfoSection plant={plant} />}
         </div>
       </div>
-    </>
+    </RedirectToSignInIfSignedOut>
   );
 };
 
