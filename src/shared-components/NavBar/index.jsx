@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import SessionContext from "contexts/SessionContext";
 import { Link } from "react-router-dom";
 import CartModal from "./modals/CartModal";
+import ModalWrapper from "./modals/CartModal/ModalWrapper";
 const NavBar = () => {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [cartModalOpen, setCartModalOpen] = useState(false);
@@ -48,11 +49,16 @@ const NavBar = () => {
               cart
             </button>
           </div>
-          {cartModalOpen && (
-            <CartModal onClickClose={() => setCartModalOpen(false)} />
-          )}
+          <ModalWrapper
+            isOpen={cartModalOpen}
+            onClickClose={() => setCartModalOpen(false)}
+          >
+            <CartModal />
+          </ModalWrapper>
         </div>
-        <button><i className="fa-solid fa-bars text-3xl"></i></button>
+        <button className="flex sm:hidden">
+          <i className="fa-solid fa-bars text-3xl"></i>
+        </button>
       </div>
     </nav>
   );
