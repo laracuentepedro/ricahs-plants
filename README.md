@@ -8,7 +8,6 @@ You can access a live version of this app here:
 
 https://ricas-plants.netlify.app
 
-
 ---
 
 ## Features
@@ -121,6 +120,8 @@ The app is built with modern tooling:
 
 ### Installation
 
+Note: You will need to provide an API key in a .env file for the server which is provided to active subscribers of react-formula.
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/laracuentepedro/ricahs-plants.git
@@ -160,6 +161,7 @@ The app is built with modern tooling:
 Planned enhancements include:
 - Plant search and filtering capabilities
 - Order processing system
+- Integration of email into the authentication flow
 
 ## Updates
 This README will be updated as new features are added to the app.
