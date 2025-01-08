@@ -51,6 +51,25 @@ const SignInPage = () => {
         <Link className="text-emerald-700 text-sm underline" to="/sign-up">
           sign up
         </Link>
+        <button
+          onClick={async () => {
+            const body = {
+              username: "guest",
+              password: "guest",
+            };
+            const response = await UserService.createSession(body);
+            const data = await response.json();
+            if (response.status === 201) {
+              setError(null);
+              sessionContext.signIn(data.capstone_session_token);
+            } else {
+              setError(data.error)
+            }
+          }}
+          className="text-sm text-emerald-700 underline"
+        >
+          sign in as guest
+        </button>
       </FormContainer>
     </RedirectToPlantsIfSignedIn>
   );
