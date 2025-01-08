@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import { getCart } from "services/cart";
 import Spinner from "shared-components/Spinner";
 import CartItem from "./CartItem";
-import ModalWrapper from "./ModalWrapper";
 
 const CartModal = ({ onClickClose }) => {
   const { username } = useContext(SessionContext);
