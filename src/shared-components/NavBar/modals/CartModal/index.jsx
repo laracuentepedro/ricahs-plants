@@ -31,7 +31,7 @@ const CartModal = ({ onClickClose }) => {
   }
 
   return (
-      <div className="bg-emerald-50 w-full max-w-lg flex flex-col h-screen">
+      <div className="bg-emerald-50 w-full max-w-lg flex flex-col h-screen font-lato">
         <div
           className="
             flex justify-center py-8 bg-emerald-800 text-emerald-50 font-playfair text-2xl"
@@ -54,7 +54,7 @@ const CartModal = ({ onClickClose }) => {
             <div className="flex flex-col text-slate-500 font-lato pb-8 border-t p-4 border-slate-200">
               <div className="flex justify-between">
                 <div>{totalItems} items</div>
-                <div>subtotal: {subtotal}</div>
+                <div>subtotal: ${subtotal}</div>
               </div>
               <button
                 onClick={() =>
