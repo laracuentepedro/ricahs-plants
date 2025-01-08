@@ -1,6 +1,13 @@
 # Rica's Plants
 
-Rica's Plants is a React-based web application built with Vite. The app serves as the frontend for an e-commerce store specializing in plants. It provides a seamless user experience for browsing and purchasing plants, with features such as user authentication, session management, and a dynamic plant list page.
+Rica's Plants is a React-based web application built with Vite. The app serves as the frontend for a fictional e-commerce store specializing in plants. It provides a seamless user experience for browsing and purchasing plants, with features such as user authentication, session management, a dynamic plant list page, and more.
+
+This app was built as the capstone project for the amazing Alvin Zablan's react formula course. 
+
+You can access a live version of this app here:
+
+https://ricas-plants.netlify.app
+
 
 ---
 
@@ -84,6 +91,27 @@ The app uses a session-based authentication system:
 
 ---
 
+### 7. **Shopping Cart Functionality**
+- **Cart Management**: Users can add plants to their shopping cart.
+  - Displays the number of items in the cart.
+  - Allows users to view and manage cart contents.
+  - Provides a checkout process for purchasing plants.
+
+---
+
+### 8. **User Profile Management**
+- **Profile Page**: Users can view and update their profile information.
+  - Allows users to change their password.
+  - Displays order history and details.
+
+---
+
+### 9. **Plant Care Instructions and Tips**
+- **Plant Details Page**: Provides detailed information about each plant.
+  - Includes care instructions and tips for maintaining healthy plants.
+
+---
+
 ## Development Setup
 The app is built with modern tooling:
 - **Vite**: For fast development and optimized builds
@@ -131,9 +159,6 @@ The app is built with modern tooling:
 ## Future Features
 Planned enhancements include:
 - Plant search and filtering capabilities
-- Shopping cart functionality
-- User profile management
-- Plant care instructions and tips
 - Order processing system
 
 ## Updates
