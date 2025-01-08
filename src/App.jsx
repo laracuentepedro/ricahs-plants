@@ -7,6 +7,7 @@ import { useState } from "react";
 import * as userService from "services/user";
 import SessionContext from "contexts/SessionContext";
 import { jwtDecode } from "jwt-decode";
+import ScrollToTop from "shared-components/ScrollToTop";
 const App = () => {
   const [sessionToken, setSessionToken] = useState(() =>
     userService.getSessionTokenStorage()
@@ -27,6 +28,7 @@ const App = () => {
       }
     }>
       <BrowserRouter>
+      <ScrollToTop/>
         <Routes>
           <Route path="/" element={<SignInPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
