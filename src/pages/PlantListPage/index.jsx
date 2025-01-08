@@ -3,6 +3,8 @@ import RedirectToSignInIfSignedOut from "shared-components/RedirectToSignInIfSig
 import * as plantService from "services/plant";
 import { useEffect, useState } from "react";
 import PlantItem from "./PlantItem";
+import { motion } from "framer-motion";
+
 const PlantListPage = () => {
   const [plants, setPlants] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -30,8 +32,15 @@ const PlantListPage = () => {
               Plants in Stock
             </div>
             <div className="flex justify-center flex-wrap">
-              {plants.map((plant) => (
-                <PlantItem key={plant.id} plant={plant} />
+              {plants.map((plant, idx) => (
+                <motion.div 
+                initial={{opacity:0, translateY:"20px"}}
+                whileInView={{opacity:1, translateY: 0}}
+                viewport={{once:true}}
+                transition={{delay: 0.3 + (idx % 3)* 0.2, duration: 0.4}}
+                key={plant.id}>
+                  <PlantItem plant={plant} />
+                </motion.div>
               ))}
             </div>
           </div>
