@@ -46,7 +46,7 @@ const NavBar = () => {
           </div>
           <div className="font-lato flex items-center text-emerald-100">
             <button onClick={() => setCartModalOpen(true)}>
-              <i className="fa-solid fa-cart-shopping mr-2"></i>
+              <i className="fa-solid fa-cart-shopping mr-2 text-xl"></i>
               cart
             </button>
           </div>
