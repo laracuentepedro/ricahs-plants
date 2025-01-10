@@ -6,6 +6,7 @@ This app was built as the capstone project for the amazing Alvin Zablan's react 
 
 You can access a live version of this app here:
 
+https://ricahs-plants.pedrolaracuente.com
 https://ricas-plants.netlify.app
 
 ---
